@@ -1,0 +1,74 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input CreateFollowInput {
+  followeeId: Float!
+}
+
+input CreateTweetDto {
+  content: String!
+}
+
+type Mutation {
+  createTweet(createTweetInputs: CreateTweetDto!): Tweet!
+  followUser(createFollowInput: CreateFollowInput!): UserFollowingEntity!
+  login(user: UserLoginDto!): UserToken!
+  register(user: UserCreateDto!): UserToken!
+}
+
+type Query {
+  findAllTweets(page: Int!): [Tweet!]!
+  findAllUsers(limit: Float!, page: Float!): [User!]!
+  findUserProfile: [User!]!
+  findUserTweets: User!
+  getAllTweetsByUserId(userId: Int!): [Tweet!]!
+  getFolllwers: User!
+  getFolllwing: User!
+}
+
+type React {
+  id: Int!
+  tweetId: Int!
+  userId: Int!
+}
+
+type Tweet {
+  content: String!
+  id: String!
+  react: [React]!
+  user: User!
+  userId: Float!
+}
+
+type User {
+  email: String!
+  followers: [User!]
+  follwing: [User!]
+  id: String!
+  name: String!
+  password: String!
+  react: [React]!
+  tweets: [Tweet!]
+}
+
+input UserCreateDto {
+  email: String!
+  name: String!
+  password: String!
+}
+
+type UserFollowingEntity {
+  followeeId: Float!
+  followerId: Float!
+  id: Float!
+}
+
+input UserLoginDto {
+  email: String!
+  password: String!
+}
+
+type UserToken {
+  token: String!
+}
